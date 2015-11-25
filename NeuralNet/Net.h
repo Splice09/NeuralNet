@@ -1,21 +1,17 @@
 #pragma once
+#include <vector>
 class Net
 {
 public:
-	Net(topology);
-	void feedForward(inputValues);
-	void backProp(inputValues);
-	void getResults(resultValues) const;
+	Net(const std::vector<unsigned> &topology);
+	void feedForward(const std::vector<double> &inputValues);
+	void backProp(const std::vector<double> &targetValues);
+	void getResults(std::vector<double> &resultValues) const;
+	int main();
 
 private:
 };
 
-int main(){
-	Net myNet(topology);
 
-	myNet.feedForward(inputValues);
-	myNet.backProp(targetValues);
-	myNet.getResults(resultValues);
-}
 
 
