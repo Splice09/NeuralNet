@@ -1,7 +1,13 @@
 #pragma once
 #include <vector>
+#include <iostream>
+
+class Neuron {};
+typedef std::vector<Neuron> Layer;
+
 class Net
 {
+
 public:
 	Net(const std::vector<unsigned> &topology);
 	void feedForward(const std::vector<double> &inputValues);
@@ -10,6 +16,7 @@ public:
 	int main();
 
 private:
+	std::vector<Layer> m_layers;// m_layers[layerNum][neuronNum]
 };
 
 
