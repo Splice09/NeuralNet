@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include "Neuron.h"
 
-class Neuron {};
+
+//class Neuron {};
 typedef std::vector<Neuron> Layer;
 
 class Net
