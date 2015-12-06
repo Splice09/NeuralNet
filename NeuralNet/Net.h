@@ -1,10 +1,9 @@
 #pragma once
 #include <vector>
+#include <cassert>
 #include <iostream>
 #include "Neuron.h"
 
-
-//class Neuron {};
 typedef std::vector<Neuron> Layer;
 
 class Net

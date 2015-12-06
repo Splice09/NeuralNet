@@ -16,11 +16,34 @@ Net::Net(const std::vector<unsigned> &topology){
 		}
 	}
 }
+/*
+	
+*/
+void Net::feedForward(const std::vector<double> &inputValues){
+	//if the number of input values is the same as the number of neurons in the layer minus the bias neuron we're good
+	assert(inputValues.size() == m_layers[0].size() - 1);
 
-void Net::feedForward(const std::vector<double> &inputValues){};
+	//loop that iterates through the neurons in a layer and assigns input values
+	for (unsigned i = 0; i < inputValues.size(); i++){
+		m_layers[0][i].setOutputValue(inputValues[i]);
+	}
+
+	//Tell each neuron to feed forward its new input data (forward propagation)
+	// - this double for loop skips the bias neuron in each layer
+	for(unsigned layerNum = 1; layerNum < m_layers.size(); ++layerNum){
+		Layer &previousLayer = m_layers[layerNum - 1];
+		for(unsigned n = 0; n < m_layers[layerNum].size() - 1; ++n){
+			m_layers[layerNum][n].feedForward(previousLayer);
+		}
+	}
+
+};
 void Net::backProp(const std::vector<double> &targetValues){};
 void Net::getResults(std::vector<double> &resultValues) const {};
 
+/*
+	Main Method
+*/
 int main(){
 	//Specifiy how many neurons belong in each layer in the topology vector
 	std::vector<unsigned> topology;
