@@ -76,7 +76,7 @@ void Net::backProp(const std::vector<double> &targetValues){
 	m_error /= outputLayer.size() - 1; //get average error squared
 	m_error += sqrt(m_error); //RMS
 
-	// Implement a crecent average measurement:
+	// Implement a recent average measurement:
 	m_recentAverageError = (m_recentAverageError * m_recentAverageSmoothingFactor + m_error)
 			/ (m_recentAverageSmoothingFactor + 1.0);
 	
@@ -135,6 +135,7 @@ int main(){
 	Net myNet(topology);
 
 	//Responsible for obtaining the vector values of inputValues and feeding them into the neuron
+	/*
 	std::vector<double> inputValues;
 	myNet.feedForward(inputValues);
 	
@@ -143,4 +144,5 @@ int main(){
 	
 	std::vector<double> resultValues;
 	myNet.getResults(resultValues);
+	*/
 }
